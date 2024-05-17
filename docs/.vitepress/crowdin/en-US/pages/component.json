@@ -352,6 +352,11 @@
         "link": "/watermark",
         "text": "Watermark",
         "promotion": "2.4.0"
+      },
+      {
+        "link": "/darg-box",
+        "text": "Darg Box",
+        "promotion": "2.8.0"
       }
     ]
   }

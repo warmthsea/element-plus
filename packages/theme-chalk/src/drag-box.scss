@@ -1,0 +1,7 @@
+@use 'mixins/mixins' as *;
+@use 'mixins/var' as *;
+@use 'common/var' as *;
+
+.el-drag-box {
+  display: flex;
+}
