@@ -6,6 +6,7 @@
       ns.is('disabled', inputNumberDisabled),
       ns.is('without-controls', !controls),
       ns.is('controls-right', controlsAtRight),
+      ns.is('controls-left', controlsAtLeft),
     ]"
     @dragstart.prevent
   >
@@ -19,7 +20,7 @@
     >
       <slot name="decrease-icon">
         <el-icon>
-          <arrow-down v-if="controlsAtRight" />
+          <arrow-down v-if="controlsAtRight || controlsAtLeft" />
           <minus v-else />
         </el-icon>
       </slot>
@@ -34,7 +35,7 @@
     >
       <slot name="increase-icon">
         <el-icon>
-          <arrow-up v-if="controlsAtRight" />
+          <arrow-up v-if="controlsAtRight || controlsAtLeft" />
           <plus v-else />
         </el-icon>
       </slot>
@@ -134,6 +135,9 @@ const numPrecision = computed(() => {
   } else {
     return Math.max(getPrecision(props.modelValue), stepPrecision)
   }
+})
+const controlsAtLeft = computed(() => {
+  return props.controls && props.controlsPosition === 'left'
 })
 const controlsAtRight = computed(() => {
   return props.controls && props.controlsPosition === 'right'

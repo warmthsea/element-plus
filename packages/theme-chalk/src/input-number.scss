@@ -128,8 +128,8 @@
 
   @include when(controls-right) {
     .#{$namespace}-input__wrapper {
-      padding-left: 15px;
-      padding-right: #{map.get($input-height, 'default') + 10};
+      padding-right: 15px;
+      padding-left: #{map.get($input-height, 'default') + 10};
     }
 
     @include e((increase, decrease)) {
@@ -148,18 +148,20 @@
 
     @include e(increase) {
       bottom: auto;
-      left: auto;
-      border-radius: 0 getCssVar('border-radius-base') 0 0;
+      right: auto;
+      left: 1px;
+      border-radius: getCssVar('border-radius-base') 0 0 0;
       border-bottom: getCssVar('border');
+      border-left: none;
+      border-right: getCssVar('border');
     }
 
     @include e(decrease) {
       right: 1px;
       top: auto;
-      left: auto;
-      border-right: none;
-      border-left: getCssVar('border');
-      border-radius: 0 0 getCssVar('border-radius-base') 0;
+      left: right;
+      border-right: getCssVar('border');
+      border-bottom-left-radius: getCssVar('border-radius-base');
     }
 
     @each $size in (large, small) {

@@ -71,7 +71,7 @@ export const inputNumberProps = buildProps({
   controlsPosition: {
     type: String,
     default: '',
-    values: ['', 'right'],
+    values: ['', 'left', 'right'],
   },
   /**
    * @description value should be set when input box is cleared
