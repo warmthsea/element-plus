@@ -9,9 +9,8 @@ on:
     branches:
       - m
   workflow_run:
-    workflows: ["pr-docs-deploy"]
-    types:
-      - success
+    workflows: ['PR Docs Build']
+    types: [completed]
 jobs:
   build:
     runs-on: ubuntu-latest
