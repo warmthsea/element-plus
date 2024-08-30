@@ -4,14 +4,6 @@ on:
   workflow_run:
     workflows: ['PR Docs Build']
     types: [completed]
-  push:
-    branches:
-      - m
-    tags:
-      - '!**'
-  pull_request:
-    branches:
-      - m
 
 jobs:
   on-success:
