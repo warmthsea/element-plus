@@ -1,17 +1,15 @@
-name: 'pkg-pr-new'
-on:
-  push:
-    branches:
-      - dev
-    tags:
-      - '!**'
-  pull_request:
-    branches:
-      - dev
-jobs:
-  build:
-    runs-on: ubuntu-latest
+name: Release PR Package
 
+on:
+  workflow_run:
+    workflows: ['PR Docs Build']
+    types: [completed]
+
+jobs:
+  on-success:
+    name: Docs Build successfully
+    runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
