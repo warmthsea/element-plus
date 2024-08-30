@@ -1,13 +1,18 @@
 name: 'pkg-pr-new'
+
 on:
+  workflow_run:
+    workflows: ['PR Docs Build']
+    types: [success]
   push:
     branches:
-      - dev
+      - m
     tags:
       - '!**'
   pull_request:
     branches:
-      - dev
+      - m
+  
 jobs:
   build:
     runs-on: ubuntu-latest
