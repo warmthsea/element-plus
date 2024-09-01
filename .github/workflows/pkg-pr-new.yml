@@ -48,4 +48,4 @@ jobs:
       - name: Publish
         run: |
           cd dist/element-plus
-          npx pkg.pr.new publish
+          pnpx pkg-pr-new publish
