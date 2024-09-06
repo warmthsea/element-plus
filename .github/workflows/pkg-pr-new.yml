@@ -1,4 +1,4 @@
-name: Publish Pull Requests & Push Pkg
+name: Publish Pull Requests & Push Pkg1
 
 on:
   push:
