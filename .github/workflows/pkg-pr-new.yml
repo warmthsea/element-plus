@@ -1,17 +1,12 @@
 name: Release Pkg
 
 on:
-  push:
-    branches:
-      - ci/release-pr
-    tags:
-      - '!**'
   workflow_run:
     workflows: ['PR Docs Build']
     types: [completed]
 
 jobs:
-  build:
+  on-success:
     name: Build successfully or Push
     runs-on: ubuntu-latest
     if: ${{ github.event.workflow_run.conclusion == 'success' }}
