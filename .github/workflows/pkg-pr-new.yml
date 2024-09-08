@@ -3,7 +3,7 @@ name: Release Pkg
 on:
   push:
     branches:
-      - ci/release-pr
+      - ccc
     tags:
       - '!**'
   workflow_run:
