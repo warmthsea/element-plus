@@ -1,4 +1,4 @@
-name: Release Pkg
+name: Release Pkg·
 
 on:
   push:
