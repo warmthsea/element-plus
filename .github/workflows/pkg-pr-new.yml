@@ -6,9 +6,6 @@ on:
       - ccc
     tags:
       - '!**'
-  workflow_run:
-    workflows: ['PR Docs Build']
-    types: [completed]
 
 jobs:
   build:
@@ -50,4 +47,4 @@ jobs:
       - name: Publish
         run: |
           cd dist/element-plus
-          pnpx pkg-pr-new@0.0.20 publish
+          pnpx pkg-pr-new publish
