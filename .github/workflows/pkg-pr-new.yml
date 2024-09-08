@@ -6,6 +6,9 @@ on:
       - ccc
     tags:
       - '!**'
+  pull_request:
+    branches:
+      - ccc
 
 jobs:
   build:
