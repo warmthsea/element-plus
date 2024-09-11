@@ -1,20 +1,19 @@
-name: Release Pkg
+name: Publish Commit Pkg
 
 on:
   push:
     branches:
-      - ccc
+      - test-pkg
     tags:
       - '!**'
-  workflow_run:
-    workflows: ['PR Docs Build']
-    types: [completed]
+  pull_request:
+    branches:
+      - test-pkg
 
 jobs:
   build:
-    name: Build successfully or Push
     runs-on: ubuntu-latest
-    if: ${{ github.repository == 'warmthsea/element-plus' && (github.event_name == 'push' || (github.event_name == 'workflow_run' && github.event.workflow_run.conclusion == 'success')) }}
+    if: ${{ github.repository == 'warmthsea/element-plus'}}
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
