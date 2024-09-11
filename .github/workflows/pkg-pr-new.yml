@@ -1,4 +1,4 @@
-name: Release Pkg
+name: Publish Commit Pkg
 
 on:
   push:
@@ -12,7 +12,6 @@ on:
 
 jobs:
   build:
-    name: Build successfully or Push
     runs-on: ubuntu-latest
     if: ${{ github.repository == 'warmthsea/element-plus'}}
     steps:
