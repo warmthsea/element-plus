@@ -6,11 +6,14 @@ on:
       - ccc
     tags:
       - '!**'
+  pull_request:
+    branches:
+      - ccc
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    if: ${{ github.repository == 'warmthsea/element-plus' && github.event_name == 'push' }}
+    if: ${{ github.repository == 'warmthsea/element-plus'}}
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
