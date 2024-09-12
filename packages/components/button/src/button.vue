@@ -7,7 +7,7 @@
     :style="buttonStyle"
     @click="handleClick"
   >
-    test-2
+    test-2******
     <template v-if="loading">
       <slot v-if="$slots.loading" name="loading" />
       <el-icon v-else :class="ns.is('loading')">
