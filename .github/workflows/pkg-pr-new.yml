@@ -1,4 +1,4 @@
-name: Release Pkg1
+name: Test suggestion
 
 on:
   push:
