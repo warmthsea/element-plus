@@ -54,7 +54,7 @@ jobs:
 
             你好，@${{ github.event.pull_request.user.login }}，你的提交消息不符合 Element Plus 的提交消息规范。
 
-            ${{ steps.lint_commit.outputs }}
+            ${{ toJSON(steps.lint_commit.outputs) }}
 
             Please refer to [Commit Example](https://element-plus.org/en-US/guide/commit-examples.html) for fixing it.
 
