@@ -10,7 +10,7 @@ jobs:
   build:
     name: Build ${{ matrix.os }} ${{ matrix.node-name }}
     runs-on: ${{ matrix.os }}
-
+    if: ${{ github.repository == 'element-plus/element-plus' }}
     strategy:
       matrix:
         node-version: [20]

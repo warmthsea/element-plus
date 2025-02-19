@@ -12,6 +12,7 @@ jobs:
   lint:
     name: Lint
     runs-on: ubuntu-latest
+    if: ${{ github.repository == 'element-plus/element-plus' }}
 
     steps:
       - uses: actions/checkout@v4
