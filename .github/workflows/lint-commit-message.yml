@@ -46,7 +46,7 @@ jobs:
 
       - name: Set success result
         if: ${{ steps.lint_commit.outputs.failed != 'true' }}
-        run: echo 'true' > ./lint-result.txt
+        run: echo 'false' > ./lint-result.txt
 
       - name: Set failed result
         if: ${{ steps.lint_commit.outputs.failed == 'true' }}
