@@ -7,6 +7,7 @@ on:
 jobs:
   comment:
     runs-on: ubuntu-latest
+    if: ${{ github.repository == 'element-plus/element-plus' }}
     steps:
       - name: Check for specific label
         if: contains(github.event.pull_request.labels.*.name, 'conflict pending')

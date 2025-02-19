@@ -55,6 +55,7 @@ jobs:
   build:
     name: Unit Test (${{ matrix.node-name }})
     runs-on: ubuntu-latest
+    if: ${{ github.repository == 'element-plus/element-plus' }}
 
     strategy:
       matrix:
