@@ -51,10 +51,12 @@ jobs:
           script: |
             const fs = require('fs');
             const lintResult = fs.readFileSync('./commit-lint.txt', 'utf8');
-            github.issues.createComment({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              issue_number: context.issue.number,
+            const { owner, repo } = context.repo;
+            const issue_number = context.issue.number;
+            await github.issues.createComment({
+              owner,
+              repo,
+              issue_number,
               body: `### Commit Lint Result\n\n\`\`\`\n${lintResult}\n\`\`\``
             });
 
