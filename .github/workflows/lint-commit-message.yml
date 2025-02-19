@@ -42,7 +42,17 @@ jobs:
 
       - name: Lint commit
         id: lint_commit
-        run: pnpm lint:commit || echo "failed=true" >> $GITHUB_OUTPUT
+        run: |
+          PR_TITLE="${{ github.event.pull_request.title }}"
+          RESULT=$(echo "$PR_TITLE" | commitlint --config ./commitlint.config.js)
+          echo "lint_result<<EOF" >> $GITHUB_OUTPUT
+          echo "$RESULT" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+          if [[ -n "$RESULT" ]]; then
+            echo "Linting failed:"
+            echo "$RESULT"
+            exit 1
+          fi
 
       - uses: actions-awesome/pr-helper@1.1.1
         with:
