@@ -44,14 +44,19 @@ jobs:
         id: lint_commit
         run: pnpm lint:commit || echo "failed=true" >> $GITHUB_OUTPUT
 
-      - name: Check lint result
-        id: check_lint_result
-        run: |
-          if grep -q "✖" ./commit-lint.txt; then
-            echo "failed=true" >> $GITHUB_OUTPUT
-          else
-            echo "failed=true" >> $GITHUB_OUTPUT
-          fi
+      - name: Comment lint result
+        uses: actions/github-script@v6
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const fs = require('fs');
+            const lintResult = fs.readFileSync('./commit-lint.txt', 'utf8');
+            github.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body: `### Commit Lint Result\n\n\`\`\`\n${lintResult}\n\`\`\``
+            });
 
       - name: Set success result
         if: ${{ steps.lint_commit.outputs.failed != 'true' }}
