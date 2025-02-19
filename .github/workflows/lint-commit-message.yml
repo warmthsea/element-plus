@@ -42,11 +42,11 @@ jobs:
 
       - name: Lint commit
         id: lint_commit
-        run: pnpm lint:commit || echo "failed=true" >> $GITHUB_OUTPUT
+        run: pnpm lint:commit
 
       - name: Set success result
         if: ${{ steps.lint_commit.outputs.failed != 'true' }}
-        run: echo 'false' > ./lint-result.txt
+        run: echo 'true' > ./lint-result.txt
 
       - name: Set failed result
         if: ${{ steps.lint_commit.outputs.failed == 'true' }}
