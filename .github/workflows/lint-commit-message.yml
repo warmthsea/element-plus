@@ -40,6 +40,10 @@ jobs:
       - name: Install dependencies
         run: pnpm i --frozen-lockfile
 
+      - name: Install dependencies
+        run: |
+          pnpm install -g @commitlint/{config-conventional,cli}
+
       - name: Lint commit
         id: lint_commit
         run: |
