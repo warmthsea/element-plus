@@ -40,23 +40,9 @@ jobs:
       - name: Install dependencies
         run: pnpm i --frozen-lockfile
 
-      - name: Install dependencies
-        run: |
-          pnpm add -D @commitlint/config-conventional @commitlint/cli -w
-
       - name: Lint commit
         id: lint_commit
-        run: |
-          PR_TITLE="${{ github.event.pull_request.title }}"
-          RESULT=$(echo "$PR_TITLE" | commitlint --config ./commitlint.config.js)
-          echo "lint_result<<EOF" >> $GITHUB_OUTPUT
-          echo "$RESULT" >> $GITHUB_OUTPUT
-          echo "EOF" >> $GITHUB_OUTPUT
-          if [[ -n "$RESULT" ]]; then
-            echo "Linting failed:"
-            echo "$RESULT"
-            exit 1
-          fi
+        run: pnpm lint:commit || echo "failed=true" >> $GITHUB_OUTPUT
 
       - uses: actions-awesome/pr-helper@1.1.1
         with:
@@ -68,7 +54,7 @@ jobs:
 
             你好，@${{ github.event.pull_request.user.login }}，你的提交消息不符合 Element Plus 的提交消息规范。
 
-            ${{ toJSON(steps.lint_commit) }}
+            ${{ toJSON(steps.lint_commit) }}-${{github.event.pull_request.title}}
 
             Please refer to [Commit Example](https://element-plus.org/en-US/guide/commit-examples.html) for fixing it.
 
