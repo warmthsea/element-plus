@@ -42,7 +42,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pnpm install -g @commitlint/{config-conventional,cli}
+          pnpm install --save-dev @commitlint/config-conventional @commitlint/cli
 
       - name: Lint commit
         id: lint_commit
