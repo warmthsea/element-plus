@@ -45,7 +45,7 @@ jobs:
         with:
           actions: 'maintain-comment, add-labels, remove-labels'
           token: ${{ github.token }}
-          labels-to-add: 'CommitMessage::111'
+          labels-to-add: 'CommitMessage::Qualified'
           labels-to-remove: 'CommitMessage::Unqualified'
           body-filter: '<!-- ELEMENT_PLUS_COMMIT_LINT -->'
           pr-number: ${{ needs.result.outputs.pr }}
