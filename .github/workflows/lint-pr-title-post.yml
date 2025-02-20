@@ -71,6 +71,7 @@ jobs:
       - uses: actions-awesome/pr-helper@1.1.1
         with:
           actions: 'remove-labels, add-labels, maintain-comment'
+          labels-to-remove: 'CommitMessage::Qualified'
           labels-to-add: 'CommitMessage::Unqualified'
           token: ${{ github.token }}
           pr-number: ${{ needs.result.outputs.pr }}
