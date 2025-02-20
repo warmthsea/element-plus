@@ -1,4 +1,4 @@
-name: Lint Commit Message
+name: Lint Pr Title
 
 on:
   pull_request:
