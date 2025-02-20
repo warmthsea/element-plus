@@ -68,28 +68,33 @@ jobs:
             <!-- ELEMENT_PLUS_COMMIT_LINT -->
           body-filter: '<!-- ELEMENT_PLUS_COMMIT_LINT -->'
 
-      - name: Set success result
+      - name: Set success result Remove Labels
         if: ${{ steps.lint_commit.outputs.failed != 'true' }}
-        run: echo 'true' > ./lint-result.txt
+        uses: actions-awesome/pr-helper@1.1.1
+        with:
+          actions: 'remove-labels, add-labels, maintain-comment'
+          labels-to-remove: 'CommitMessage::Unqualified'
+          token: ${{ github.token }}
+          body-filter: '<!-- ELEMENT_PLUS_COMMIT_LINT -->'
 
-      - name: Set failed result
+      - name: Set failed result Add Labels
         if: ${{ steps.lint_commit.outputs.failed == 'true' }}
-        run: echo 'false' > ./lint-result.txt
-
-      - name: Set PR number
-        run: echo $PULL_REQUEST_NUMBER > pr.txt
-
-      - uses: actions/upload-artifact@v4
+        uses: actions-awesome/pr-helper@1.1.1
         with:
-          name: commit-lint-report
-          path: ./commit-lint.txt
+          actions: 'remove-labels, add-labels, maintain-comment'
+          labels-to-add: 'CommitMessage::Unqualified'
+          token: ${{ github.token }}
+          comment-body: |
+            Hello, @${{ github.event.pull_request.user.login }}, seems like your commit message contains some issues.
 
-      - uses: actions/upload-artifact@v4
-        with:
-          name: commit-lint-result
-          path: ./lint-result.txt
+            你好，@${{ github.event.pull_request.user.login }}，你的提交消息不符合 Element Plus 的提交消息规范。
 
-      - uses: actions/upload-artifact@v4
-        with:
-          name: pr-number
-          path: ./pr.txt
+            ${{ toJSON(steps.lint_commit) }}
+
+            Please refer to [Commit Example](https://element-plus.org/en-US/guide/commit-examples.html) for fixing it.
+
+            请参考 [提交示例](https://element-plus.org/en-US/guide/commit-examples.html) 来修改你的提交消息。
+
+            <sub>Generated with :heart: by ElementPlusBot</sub>
+            <!-- ELEMENT_PLUS_COMMIT_LINT -->
+          body-filter: '<!-- ELEMENT_PLUS_COMMIT_LINT -->'
