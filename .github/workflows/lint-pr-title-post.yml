@@ -2,7 +2,7 @@ name: 📮 Lint PR Title Post
 
 on:
   workflow_run:
-    workflows: ['Lint PR Title']
+    workflows: ['Lint Commit Message']
     types: [completed]
 
 jobs:
