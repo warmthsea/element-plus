@@ -59,7 +59,7 @@ jobs:
           token: ${{ github.token }}
           pr-number: ${{ needs.result.outputs.pr }}
           comment-body: |
-            Hello, @${{ github.event.pull_request.user.login }}, your PR title does not meet the standards, please [refer to here](https://github.com/element-plus/element-plus/commits/dev/).
-            你好，@${{ github.event.pull_request.user.login }}，你的 PR 标题不符合规范，[请参考这里](https://github.com/element-plus/element-plus/commits/dev/)。
+            Hello, @${{ github.actor }}, your PR title does not meet the standards, please [refer to here](https://github.com/element-plus/element-plus/commits/dev/).
+            你好，@${{ github.actor }}，你的 PR 标题不符合规范，[请参考这里](https://github.com/element-plus/element-plus/commits/dev/)。
             <!-- ELEMENT_PLUS_COMMIT_LINT -->
           body-filter: '<!-- ELEMENT_PLUS_COMMIT_LINT -->'
